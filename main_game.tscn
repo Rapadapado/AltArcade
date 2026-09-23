@@ -1,0 +1,211 @@
+[gd_scene format=3 uid="uid://411k654xsqdc"]
+
+[ext_resource type="Script" uid="uid://c8g7tmd3tsn27" path="res://Scenes/main_game.gd" id="1_pu3va"]
+[ext_resource type="Script" uid="uid://bljysj482aqty" path="res://Scenes/player.gd" id="2_0e3vx"]
+[ext_resource type="Script" uid="uid://c1pyad6a7vath" path="res://Scenes/player_2.gd" id="3_0e3vx"]
+[ext_resource type="Script" uid="uid://cu8ffobywd5bq" path="res://Scenes/ball.gd" id="4_6j5ir"]
+[ext_resource type="Script" uid="uid://bsfi3q2tlongx" path="res://Scenes/cpu.gd" id="4_mgc0q"]
+[ext_resource type="Script" uid="uid://ojlfdbqvglax" path="res://Scenes/cpu_2.gd" id="5_bb2iq"]
+[ext_resource type="AudioStream" uid="uid://d0uxk3466p38a" path="res://Asset/zehendrew-simple-swoosh-463805.mp3" id="7_18r40"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8sk4"]
+size = Vector2(1152, 23.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4vhf"]
+size = Vector2(33.5, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbajs"]
+size = Vector2(23.5, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpt6c"]
+size = Vector2(2000000, 12000003)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fveh"]
+size = Vector2(2000000, 12000002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjvbm"]
+size = Vector2(20, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3v4b"]
+
+[node name="MainGame" type="Sprite2D" unique_id=1712921311]
+script = ExtResource("1_pu3va")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=312159501]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0.69143635, 3.85046e-07, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1150641494]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 568.0
+offset_top = -24.0
+offset_right = 584.0
+offset_bottom = 672.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top" type="StaticBody2D" parent="." unique_id=1227077283]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top" unique_id=355363792]
+position = Vector2(576, -11.5)
+shape = SubResource("RectangleShape2D_j8sk4")
+
+[node name="Bottom" type="StaticBody2D" parent="." unique_id=273419782]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom" unique_id=1868999077]
+position = Vector2(576, 659.75)
+shape = SubResource("RectangleShape2D_j8sk4")
+
+[node name="Left" type="Area2D" parent="." unique_id=1263694103]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left" unique_id=2006259459]
+light_mask = 2
+position = Vector2(-16.75, 324)
+shape = SubResource("RectangleShape2D_k4vhf")
+
+[node name="Right" type="Area2D" parent="." unique_id=1420604536]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right" unique_id=1299947477]
+light_mask = 2
+position = Vector2(1163.75, 324)
+shape = SubResource("RectangleShape2D_kbajs")
+
+[node name="Player" type="StaticBody2D" parent="." unique_id=126635361]
+position = Vector2(44, 324)
+script = ExtResource("2_0e3vx")
+
+[node name="ColorRect" type="ColorRect" parent="Player" unique_id=1497337014]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_right = 20.0
+offset_bottom = 60.0
+grow_vertical = 2
+color = Color(0.8912906, 4.1873755e-06, 8.663535e-07, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1062745850]
+position = Vector2(10, 0)
+scale = Vector2(1e-05, 1e-05)
+shape = SubResource("RectangleShape2D_tpt6c")
+
+[node name="Player2" type="StaticBody2D" parent="." unique_id=1985060773]
+position = Vector2(684, 324)
+script = ExtResource("3_0e3vx")
+
+[node name="ColorRect" type="ColorRect" parent="Player2" unique_id=698674176]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_right = 20.0
+offset_bottom = 60.0
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2" unique_id=80088994]
+position = Vector2(10, 0)
+scale = Vector2(1e-05, 1e-05)
+shape = SubResource("RectangleShape2D_1fveh")
+
+[node name="CPU" type="StaticBody2D" parent="." unique_id=457088145]
+position = Vector2(1088, 324)
+script = ExtResource("4_mgc0q")
+
+[node name="ColorRect" type="ColorRect" parent="CPU" unique_id=920061049]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_right = 20.0
+offset_bottom = 60.0
+grow_vertical = 2
+color = Color(0, 0, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CPU" unique_id=1249796154]
+position = Vector2(10, 0)
+shape = SubResource("RectangleShape2D_wjvbm")
+
+[node name="CPU2" type="StaticBody2D" parent="." unique_id=718897398]
+position = Vector2(448, 324)
+script = ExtResource("5_bb2iq")
+
+[node name="ColorRect" type="ColorRect" parent="CPU2" unique_id=36242826]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_right = 20.0
+offset_bottom = 60.0
+grow_vertical = 2
+color = Color(0, 0, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CPU2" unique_id=1062345831]
+position = Vector2(10, 0)
+shape = SubResource("RectangleShape2D_wjvbm")
+
+[node name="Ball" type="CharacterBody2D" parent="." unique_id=844551784]
+position = Vector2(576, 324)
+script = ExtResource("4_6j5ir")
+
+[node name="ColorRect" type="ColorRect" parent="Ball" unique_id=1632535122]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=405164819]
+shape = SubResource("RectangleShape2D_u3v4b")
+
+[node name="Timer" type="Timer" parent="." unique_id=851381140]
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1549959452]
+stream = ExtResource("7_18r40")
+
+[node name="Score" type="CanvasLayer" parent="." unique_id=960419696]
+
+[node name="Player" type="Label" parent="Score" unique_id=476659889]
+offset_left = 648.0
+offset_top = -8.0
+offset_right = 696.0
+offset_bottom = 61.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(1, 0.7411765, 0, 1)
+theme_override_font_sizes/font_size = 55
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CPU" type="Label" parent="Score" unique_id=1083895806]
+offset_left = 464.0
+offset_top = -8.0
+offset_right = 504.0
+offset_bottom = 69.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(1, 0.7411765, 0, 1)
+theme_override_font_sizes/font_size = 55
+text = "0"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=236302607]
+position = Vector2(576, 324)
+
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
